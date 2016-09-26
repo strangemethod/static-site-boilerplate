@@ -1,14 +1,14 @@
-# static-site-boilerplate
+# Static Site Boilerplate
 A dead-simple starting point for static site development via Gulp.
-
-## Install and Run
-- `npm install`
-- `gulp`
 
 ## Objectives
 - Compile handlebars templates and partials
 - Compile and autoprefix SASS
 - Run a local server and sync with LiveReload
+
+## Install and Run
+- `npm install`
+- `gulp`
 
 ## Local Server
 - The server is run by gulp-connect [https://www.npmjs.com/package/gulp-connect]
