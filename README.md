@@ -28,3 +28,6 @@ A dead-simple starting point for static site development via Gulp.
 - Are found in the `/sass` directory
 - Files suffixed with .scss are compiled to `dist/css`
 - Normalize.css is installed via npm
+
+## Static Assets
+- Static assets such as images and vendor libraries can be placed in the `assets` directory, and will be copied over to `dist/assets`

@@ -14,7 +14,8 @@ var gulp = require('gulp'),
 
 var paths = {
   templates: './templates',
-  sass: './sass'
+  sass: './sass',
+  assets: './assets'
 };
 
 
@@ -42,6 +43,16 @@ gulp.task('sass', function() {
     .pipe(notify({ message: 'SASS compiled!' }));
 });
 
+gulp.task('static-assets', function() {
+  gulp.src(path.join(paths.assets, '*'))
+    .pipe(gulp.dest('./dist/assets'))
+    .pipe(livereload(server))
+    .pipe(notify({ message: 'Static Assets copied' }));
+  gulp.src('node_modules/normalize.css/normalize.css')
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(livereload(server))
+    .pipe(notify({ message: 'Normalize copied' }));
+});
 
 gulp.task('connect', function() {
   connect.server({
@@ -74,6 +85,6 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['fileinclude', 'sass', 'connect', 'watch'], function() {
+gulp.task('default', ['fileinclude', 'sass', 'static-assets', 'connect', 'watch'], function() {
 
 });
