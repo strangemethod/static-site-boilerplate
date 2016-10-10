@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     sass = require('gulp-sass'),
-    fileinclude = require('gulp-file-include'),
+    data = require('gulp-data'),
+    handlebars = require('gulp-compile-handlebars'),
     rename = require('gulp-rename'),
     notify = require('gulp-notify'),
     livereload = require('gulp-livereload'),
@@ -10,29 +11,38 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     autoprefixer = require('gulp-autoprefixer'),
     server = lr(),
-    path = require("path");
+    path = require('path');
 
 var paths = {
   templates: './templates',
   sass: './sass',
-  assets: './assets'
+  assets: './assets',
+  data: './data'
 };
 
 
-gulp.task('fileinclude', function() {
-  return  gulp.src(path.join(paths.templates, '*.tpl.html'))
-    .pipe(fileinclude())
-    .pipe(rename({
-      extname: ""
-     }))
-    .pipe(rename({
-      extname: ".html"
-     }))
-    .pipe(gulp.dest('./dist'))
-    .pipe(livereload(server))
-    .pipe(notify({ message: 'Includes: included' }));
-});
+gulp.task('handlebars', function() {
 
+    var templateData = {},
+
+    options = {
+        ignorePartials: true,
+        batch : ['./partials']
+    }
+ 
+    return gulp.src(path.join(paths.templates, '*.handlebars'))
+        .pipe(data(function(file) {
+          return require('./data/app.json');
+        }))
+        .pipe(handlebars(templateData, options))
+        .pipe(rename({
+          extname: ""
+         }))
+        .pipe(rename({
+          extname: ".html"
+         }))
+        .pipe(gulp.dest('./dist'));
+});
 
 gulp.task('sass', function() {
   return gulp.src(path.join(paths.sass, '*.scss'))
@@ -67,14 +77,13 @@ function watchStuff(task) {
   server.listen(35729, function (err) {
     if (err) {
       return console.error(err) 
-      //TODO use notify to log a message on Sass compile fail and Beep
     };
 
     //Watch task for sass
     gulp.watch(path.join(paths.sass, '**/*.scss'), [task]);
 
     // watch task for gulp-includes
-    gulp.watch(path.join(paths.templates, '**/*.html'), ['fileinclude']);
+    gulp.watch(path.join(paths.templates, '**/*.handlebars'), ['handlebars']);
 
   });
 }
@@ -85,6 +94,6 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['fileinclude', 'sass', 'static-assets', 'connect', 'watch'], function() {
+gulp.task('default', ['handlebars', 'sass', 'static-assets', 'connect', 'watch'], function() {
 
 });
