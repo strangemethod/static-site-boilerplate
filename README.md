@@ -18,7 +18,7 @@ A dead-simple starting point for static site development via Gulp.
 
 ## Templates
 - Templates are found in the `/src/templates` directory
-- Are suffixed with `.tpl.html`
+- Are suffixed with `.hbs`
 - Compile to /public and are suffixed with `.html` only
 
 ## Partials 
