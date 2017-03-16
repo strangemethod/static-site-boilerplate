@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 	data = require('gulp-data'),
 	handlebars = require('gulp-compile-handlebars'),
 	rename = require('gulp-rename'),
-	notify = require('gulp-notify'),
+	// notify = require('gulp-notify'),
 	livereload = require('gulp-livereload'),
 	lr = require('tiny-lr'),
 	connect = require('gulp-connect'),
@@ -54,8 +54,8 @@ gulp.task('sass', function() {
 		.pipe(sass({ style: 'expanded', sourceComments: 'map', errLogToConsole: true}))
 		.pipe(autoprefixer('last 2 version', "> 1%", 'ie 8', 'ie 9'))
 		.pipe(gulp.dest('./public/css'))
-		.pipe(livereload(server))
-		.pipe(notify({ message: 'SASS compiled!' }));
+		.pipe(livereload(server));
+		// .pipe(notify({ message: 'SASS compiled!' }));
 });
 
 
@@ -64,8 +64,8 @@ gulp.task('scripts', function() {
     .pipe(concat('all.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
-	.pipe(livereload(server))
-	.pipe(notify({ message: 'JS compiled!' }));
+	.pipe(livereload(server));
+	// .pipe(notify({ message: 'JS compiled!' }));
 });
 
 
@@ -77,27 +77,26 @@ gulp.task('connect', function() {
 	});
 });
 
-function watchStuff(task) {
-	// Listen on port 35729
+
+gulp.task('watch', function() {
+
 	server.listen(35729, function (err) {
 		if (err) {
 			return console.error(err) 
 		};
 
-		//Watch task for sass
-		gulp.watch(path.join(paths.sass, '**/*.scss'), [task]);
-
 		// watch task for gulp-includes
+		gulp.watch(path.join(paths.partials, '**/*.handlebars'), ['handlebars']);
 		gulp.watch(path.join(paths.templates, '**/*.handlebars'), ['handlebars']);
 
+		//Watch task for sass
+		gulp.watch(path.join(paths.sass, '**/*.scss'), ['sass']);
+
+		//Watch task for js
+		gulp.watch(path.join(paths.js, '**/*.js'), ['scripts']);
+
 	});
-}
 
-
-gulp.task('watch', function() {
-	watchStuff('sass');
-	watchStuff('scripts');
-	watchStuff('handlebars');
 });
 
 
