@@ -14,20 +14,20 @@ A dead-simple starting point for static site development via Gulp.
 
 ## Local Server
 - The server is run by [gulp-connect](https://www.npmjs.com/package/gulp-connect)
-- The default root directory is `dist`
+- The default root directory is `public`
 
 ## Templates
-- Are found in the `/src/templates` directory
+- Templates are found in the `/src/templates` directory
 - Are suffixed with `.tpl.html`
 - Compile to /public and are suffixed with `.html` only
 
 ## Partials 
-- Are found in the `/src/partials` directory 
+- Partials are found in the `/src/partials` directory 
 - Partials are included in templates via [gulp-hb](https://github.com/shannonmoeller/gulp-hb)
 - `_head.html` and '_foot.html' are based on [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html)
 
-## SASS/CSS
-- Are found in the `/src/sass` directory
+## SASS
+- SASS files are found in the `/src/sass` directory
 - Files suffixed with .scss are compiled to `public/css`
 - Filex prefixed with underscores are skipped by the compiler
 - Normalize.css is included in the `/src/vendor` directory
