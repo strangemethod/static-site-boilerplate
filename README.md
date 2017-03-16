@@ -33,5 +33,9 @@ A dead-simple starting point for static site development via Gulp.
 ## Static Assets
 - Static assets such as images and vendor libraries can be placed in the `assets` directory, and will be copied over to `dist/assets`
 
+## JSON Data
+- All JSON data in `/data/app.json` is available to handlebars templates and partials
+
+
 ##License
 MIT © [Andrew Bowles](https://github.com/strangemethod)
