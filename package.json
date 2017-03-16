@@ -12,7 +12,6 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^2.3.0",
     "gulp-connect": "^5.0.0",
     "gulp-data": "^1.2.1",
     "gulp-file-include": "^0.14.0",
