@@ -1,1 +1,1 @@
-console.log("init carousel"),console.log("init hero");
+console.log("init grid"),console.log("init hero");

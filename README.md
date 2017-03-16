@@ -6,6 +6,7 @@ A dead-simple starting point for static site development via Gulp.
 - Compile and autoprefix SASS
 - Run a local server and sync with LiveReload
 - Provide a bare-bones starting point based on HTML5 Boilerplate and Normalize.css
+- Implement portable components that can be included as template partials
 
 ## Install and Run
 - `npm install`
