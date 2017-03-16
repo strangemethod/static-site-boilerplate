@@ -16,25 +16,26 @@ A dead-simple starting point for static site development via Gulp.
 - The default root directory is `dist`
 
 ## Templates
-- Are found in the `/templates` directory
+- Are found in the `/src/templates` directory
 - Are suffixed with `.tpl.html`
-- Compile to /dist and are suffixed with `.html` only
+- Compile to /public and are suffixed with `.html` only
 
 ## Partials 
-- Are found in the `/partials` directory 
+- Are found in the `/src/partials` directory 
 - File names are prefixed with underscores and are included in Templates by [gulp-fileinclude](https://www.npmjs.com/package/gulp-file-include)
 - `_head.html` and '_foot.html' are based on [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html)
 
 ## SASS/CSS
-- Are found in the `/sass` directory
+- Are found in the `/src/sass` directory
 - Files suffixed with .scss are compiled to `dist/css`
-- Normalize.css is installed via npm
+- Filex prefixed with underscores are skipped by the compiler
+- Normalize.css is included in the `/src/vendor` directory
 
 ## Static Assets
-- Static assets such as images and vendor libraries can be placed in the `assets` directory, and will be copied over to `dist/assets`
+- Static assets such as images, fonts and vendor libraries can be placed directly in `/public`
 
 ## JSON Data
-- All JSON data in `/data/app.json` is available to handlebars templates and partials
+- All JSON data in `/src/data/data.json` is available to handlebars templates and partials
 
 
 ##License
