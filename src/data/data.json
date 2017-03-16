@@ -1,4 +1,8 @@
 {
-    "helloWorld": "Static Site Boilerplate"
+    "helloWorld": "Static Site Boilerplate",
+    "hero": {
+    	"title": "This is a Hero Component",
+    	"description": "This Static Site Generator utilizes fully portable components that include their own JS+SASS and are available as template partials"
+    }
 
 }

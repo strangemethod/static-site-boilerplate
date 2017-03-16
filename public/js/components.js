@@ -1,0 +1,1 @@
+console.log("init carousel"),console.log("init hero");
