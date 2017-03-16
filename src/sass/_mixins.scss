@@ -1,0 +1,38 @@
+@mixin circle($size) {
+
+	$color-primary: #888;
+	$color-secondary: #EFEFEF;
+
+	background: $color-primary;
+	width: $size;
+	height: $size;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 15px;
+	position: relative;
+	z-index: 1;
+
+	&::before, &::after  {
+		border-radius: 50%;
+		display: inline-block;
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&::before {
+		background: $color-secondary;
+		width: $size / 1.5;
+		height: $size / 1.5;	
+		z-index: 2;
+	}
+
+	&::after {
+		background: $color-primary;
+		width: $size / 2.5;
+		height:$size / 2.5;
+		z-index: 3;		
+	}
+}

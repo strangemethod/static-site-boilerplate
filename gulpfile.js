@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	sass = require('gulp-sass'),
+	concat = require('gulp-concat'),
+	uglify = require('gulp-uglify'),
 	data = require('gulp-data'),
 	handlebars = require('gulp-compile-handlebars'),
 	rename = require('gulp-rename'),
@@ -18,6 +20,7 @@ var paths = {
 	templates: './src/templates/',
 	partials: './src/partials/',
 	sass: './src/sass/',
+	js: './src/js/',
 	data: './src/data/'
 };
 
@@ -25,7 +28,6 @@ var paths = {
 gulp.task('handlebars', function() {
 
 	var templateData = {},
-
 	options = {
 			ignorePartials: true,
 			batch : [paths.partials]
@@ -42,8 +44,10 @@ gulp.task('handlebars', function() {
 			.pipe(rename({
 				extname: ".html"
 			 }))
-			.pipe(gulp.dest('./public'));
+			.pipe(gulp.dest('./public'))
+			.pipe(livereload(server));
 });
+
 
 gulp.task('sass', function() {
 	return gulp.src(path.join(paths.sass, '*.scss'))
@@ -53,6 +57,17 @@ gulp.task('sass', function() {
 		.pipe(livereload(server))
 		.pipe(notify({ message: 'SASS compiled!' }));
 });
+
+
+gulp.task('scripts', function() {
+  return gulp.src(path.join(paths.js, '*.js'))
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/js'))
+	.pipe(livereload(server))
+	.pipe(notify({ message: 'JS compiled!' }));
+});
+
 
 gulp.task('connect', function() {
 	connect.server({
@@ -81,10 +96,11 @@ function watchStuff(task) {
 
 gulp.task('watch', function() {
 	watchStuff('sass');
+	watchStuff('scripts');
 	watchStuff('handlebars');
 });
 
 
-gulp.task('default', ['handlebars', 'sass', 'connect', 'watch'], function() {
+gulp.task('default', ['handlebars', 'sass', 'scripts', 'connect', 'watch'], function() {
 
 });
