@@ -1,0 +1,25 @@
+@import 'vars';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #EFEFEF;
+}
+
+.container {
+	width: 100%;
+	padding: 100px 40px;
+	max-width: $container-width;
+	margin: 0 auto;
+}
+
+.circle {
+	background: #000;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+}

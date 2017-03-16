@@ -13,11 +13,12 @@ var gulp = require('gulp'),
 	server = lr(),
 	path = require('path');
 
+
 var paths = {
-	templates: './templates',
-	sass: './sass',
-	assets: './assets',
-	data: './data'
+	templates: './src/templates/',
+	partials: './src/partials/',
+	sass: './src/sass/',
+	data: './src/data/'
 };
 
 
@@ -27,12 +28,12 @@ gulp.task('handlebars', function() {
 
 	options = {
 			ignorePartials: true,
-			batch : ['./partials']
+			batch : [paths.partials]
 	}
 
 	return gulp.src(path.join(paths.templates, '*.handlebars'))
 			.pipe(data(function(file) {
-				return require('./data/app.json');
+				return require(paths.data + 'data.json');
 			}))
 			.pipe(handlebars(templateData, options))
 			.pipe(rename({
@@ -41,33 +42,22 @@ gulp.task('handlebars', function() {
 			.pipe(rename({
 				extname: ".html"
 			 }))
-			.pipe(gulp.dest('./dist'));
+			.pipe(gulp.dest('./public'));
 });
 
 gulp.task('sass', function() {
 	return gulp.src(path.join(paths.sass, '*.scss'))
 		.pipe(sass({ style: 'expanded', sourceComments: 'map', errLogToConsole: true}))
 		.pipe(autoprefixer('last 2 version', "> 1%", 'ie 8', 'ie 9'))
-		.pipe(gulp.dest('./dist/css'))
+		.pipe(gulp.dest('./public/css'))
 		.pipe(livereload(server))
 		.pipe(notify({ message: 'SASS compiled!' }));
-});
-
-gulp.task('static-assets', function() {
-	gulp.src(path.join(paths.assets, '*'))
-		.pipe(gulp.dest('./dist/assets'))
-		.pipe(livereload(server))
-		.pipe(notify({ message: 'Static Assets copied' }));
-	gulp.src('node_modules/normalize.css/normalize.css')
-		.pipe(gulp.dest('./dist/css'))
-		.pipe(livereload(server))
-		.pipe(notify({ message: 'Normalize copied' }));
 });
 
 gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
-		root: ['dist'],
+		root: ['public'],
 		livereload: false
 	});
 });
@@ -95,6 +85,6 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('default', ['handlebars', 'sass', 'static-assets', 'connect', 'watch'], function() {
+gulp.task('default', ['handlebars', 'sass', 'connect', 'watch'], function() {
 
 });
