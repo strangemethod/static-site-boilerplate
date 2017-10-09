@@ -1,1 +1,1 @@
-console.log("javascript loaded");
+"use strict";console.log("javascript loaded");

@@ -24,7 +24,7 @@ A dead-simple starting point for static site development via Gulp.
 ## Partials 
 - Partials are found in the `/src/partials` directory 
 - Partials are included in templates via [gulp-hb](https://github.com/shannonmoeller/gulp-hb)
-- `_head.html` and '_foot.html' are based on [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html)
+- `_head.html` and `_foot.html` are based on [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html)
 
 ## SASS
 - SASS files are found in the `/src/sass` directory

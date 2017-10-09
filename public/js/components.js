@@ -1,1 +1,1 @@
-console.log("init grid"),console.log("init hero");
+"use strict";console.log("init grid"),console.log("init hero");

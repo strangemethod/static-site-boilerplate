@@ -9,7 +9,10 @@
   "author": "Andrew Bowles <andrew.a.bowles@gmail.com> (http://www.andrewbowles.com)",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^7.0.0",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",

@@ -14,7 +14,8 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	server = lr(),
 	merge = require('merge-stream'),
-	path = require('path');
+	path = require('path'),
+	babel = require('gulp-babel');
 
 
 var paths = {
@@ -55,6 +56,9 @@ gulp.task('components', function() {
 		.pipe(livereload(server));
 
 	var compileJs = gulp.src(path.join(paths.components, '**/*.js'))
+	    .pipe(babel({
+            presets: ['env']
+        }))  
 	    .pipe(concat('components.js'))
 	    .pipe(uglify())
 	    .pipe(gulp.dest('./public/js'))
@@ -75,6 +79,9 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(path.join(paths.scripts, '*.js'))
+    .pipe(babel({
+        presets: ['env']
+    }))
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
@@ -87,7 +94,7 @@ gulp.task('connect', function() {
 	connect.server({
 		port: 1337,
 		root: ['public'],
-		livereload: false
+		livereload: true
 	});
 });
 
