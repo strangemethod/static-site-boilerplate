@@ -3,6 +3,7 @@ A dead-simple starting point for static site development via Gulp.
 
 ## Objectives
 - Compile handlebars templates and partials
+- Compile ES6 with babel
 - Compile and autoprefix SASS
 - Run a local server and sync with LiveReload
 - Provide a bare-bones starting point based on HTML5 Boilerplate and Normalize.css
