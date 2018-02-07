@@ -1,19 +1,19 @@
-/* line 4, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/main.scss */
+/* line 4, src/sass/main.scss */
 * {
   box-sizing: border-box; }
 
-/* line 8, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/main.scss */
+/* line 8, src/sass/main.scss */
 body {
   background: #EFEFEF; }
 
-/* line 12, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/main.scss */
+/* line 12, src/sass/main.scss */
 .container {
   width: 100%;
   padding: 40px;
   max-width: 1200px;
   margin: 0 auto; }
 
-/* line 19, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/main.scss */
+/* line 19, src/sass/main.scss */
 .circle {
   background: #888;
   width: 40px;
@@ -23,7 +23,7 @@ body {
   margin-right: 15px;
   position: relative;
   z-index: 1; }
-  /* line 15, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/_mixins.scss */
+  /* line 15, src/sass/_mixins.scss */
   .circle::before, .circle::after {
     border-radius: 50%;
     display: inline-block;
@@ -32,13 +32,13 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%); }
-  /* line 25, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/_mixins.scss */
+  /* line 25, src/sass/_mixins.scss */
   .circle::before {
     background: #EFEFEF;
     width: 26.66667px;
     height: 26.66667px;
     z-index: 2; }
-  /* line 32, /Users/andrewb/Projects/starters/static-site-boilerplate/src/sass/_mixins.scss */
+  /* line 32, src/sass/_mixins.scss */
   .circle::after {
     background: #888;
     width: 16px;
