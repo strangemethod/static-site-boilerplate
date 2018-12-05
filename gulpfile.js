@@ -58,7 +58,7 @@ gulp.task('components', function() {
 	var compileJs = gulp.src(path.join(paths.components, '**/*.js'))
 	    .pipe(babel({
             presets: ['env']
-        }))  
+        }))
 	    .pipe(concat('components.js'))
 	    .pipe(uglify())
 	    .pipe(gulp.dest('./public/js'))
@@ -103,9 +103,10 @@ gulp.task('watch', function() {
 
 	server.listen(35729, function (err) {
 		if (err) {
-			return console.error(err) 
+			return console.error(err)
 		};
 
+    gulp.watch(path.join(paths.data, '**/*.json'), ['handlebars']);
 		gulp.watch(path.join(paths.partials, '**/*.hbs'), ['handlebars']);
 		gulp.watch(path.join(paths.templates, '**/*.hbs'), ['handlebars']);
 		gulp.watch(path.join(paths.components, '**/*.hbs'), ['handlebars']);
