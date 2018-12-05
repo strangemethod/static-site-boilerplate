@@ -29,23 +29,23 @@ var paths = {
 
 
 gulp.task('handlebars', function () {
-    var hbStream = hb()
-        .partials(path.join(paths.partials, '*.hbs'))
-        .partials(path.join(paths.components, '**/*.hbs'))
-        .data(path.join(paths.data, '*.json'));
+  var hbStream = hb()
+    .partials(path.join(paths.partials, '*.hbs'))
+    .partials(path.join(paths.components, '**/*.hbs'))
+    .data(path.join(paths.data, '*.json'));
 
     return gulp
-        .src(path.join(paths.templates, '*.hbs'))
-        .pipe(hbStream)
-		.pipe(rename({
-			extname: ""
-		 }))
-		.pipe(rename({
-			extname: ".html"
-		 }))
-        .pipe(gulp.dest('./public'))
-		.pipe(livereload(server));
-});
+      .src(path.join(paths.templates, '*.hbs'))
+      .pipe(hbStream)
+  		.pipe(rename({
+  			extname: ""
+  		 }))
+  		.pipe(rename({
+  			extname: ".html"
+  		 }))
+      .pipe(gulp.dest('./public'))
+  		.pipe(livereload(server));
+  });
 
 gulp.task('components', function() {
 	var compileSass = gulp.src(path.join(paths.components, '**/*.scss'))
@@ -56,12 +56,12 @@ gulp.task('components', function() {
 		.pipe(livereload(server));
 
 	var compileJs = gulp.src(path.join(paths.components, '**/*.js'))
-	    .pipe(babel({
-            presets: ['env']
-        }))
-	    .pipe(concat('components.js'))
-	    .pipe(uglify())
-	    .pipe(gulp.dest('./public/js'))
+    .pipe(babel({
+          presets: ['env']
+      }))
+    .pipe(concat('components.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/js'))
 		.pipe(livereload(server));
 
 	return merge(compileSass, compileJs);
