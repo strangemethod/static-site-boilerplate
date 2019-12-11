@@ -4,7 +4,7 @@
   "description": "A dead-simple starting point for static site development.",
   "main": "app.js",
   "scripts": {
-    "test": "karma"
+    "start": "gulp"
   },
   "author": "Andrew Bowles <andrew.a.bowles@gmail.com> (http://www.andrewbowles.com)",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "gulp-uglify": "^2.1.2",
     "merge-stream": "^1.0.1",
     "normalize.css": "^4.2.0",
+    "require-dir": "^1.2.0",
     "stream-array": "^1.1.2",
     "through2": "^2.0.3",
     "tiny-lr": "^0.2.1",

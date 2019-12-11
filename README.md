@@ -11,7 +11,7 @@ A dead-simple starting point for static site development via Gulp.
 
 ## Install and Run
 - `npm install`
-- `gulp`
+- `npm start`
 
 ## Local Server
 - The server is run by [gulp-connect](https://www.npmjs.com/package/gulp-connect)
@@ -22,8 +22,8 @@ A dead-simple starting point for static site development via Gulp.
 - Are suffixed with `.hbs`
 - Compile to /public and are suffixed with `.html` only
 
-## Partials 
-- Partials are found in the `/src/partials` directory 
+## Partials
+- Partials are found in the `/src/partials` directory
 - Partials are included in templates via [gulp-hb](https://github.com/shannonmoeller/gulp-hb)
 - `_head.html` and `_foot.html` are based on [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html)
 
