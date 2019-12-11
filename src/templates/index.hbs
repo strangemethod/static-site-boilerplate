@@ -1,10 +1,12 @@
-{{> head}}
+{{#extend "layout"}}
+    {{#content "content"}}
+      <section class="container">
+        {{lorem}}
+          <h1><span class="circle"></span>{{data.helloWorld}}</h1>
+        </section>
+      {{> hero/hero}}
+    {{/content}}
+{{/extend}}
 
-	<section class="container">
-		{{lorem}}
-    	<h1><span class="circle"></span>{{data.helloWorld}}</h1>
-    </section>
 
-	{{> hero/hero}}
 
-{{> foot}}
